@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Xamarinはいいぞ</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="cterash">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style type="text/css">
+		  .reveal h1,
+		  .reveal h2,
+		  .reveal h3,
+		  .reveal h4,
+		  .reveal h5,
+		  .reveal h6 {
+		    text-transform: none;
+		  }
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-transition="convex">
+					<h1>Xamarinはいいぞ</h1>
+					<p>
+						<small>@chichi1091</small>
+					</p>
+				</section>
+
+				<!-- <section>
+					<h2>はじめに</h2>
+					<p>
+						今回のテーマはC/C++/C＃ですが一部まったく無関係な技術が登場します。それについてのツッコミや苦情等は一切受付けませんのでご了承ください
+					</p>
+					<img src="images/warning.png" style="width:50%;height:50%"/>
+				</section> -->
+
+				<section>
+					いきなりですが「Xamarinはいいぞ」の元ネタしってますか？
+				</section>
+
+				<section>
+					<table>
+						<tr>
+							<td><img src="images/chomado.png"/></td>
+							<td style="vertical-align: top;">
+								MicrosoftのC#、Xamarinエバンジェリスト 千代田まどか(通称ちょまど)さんの口癖
+							</td>
+						</tr>
+					</table>
+					<p>Twitterのハッシュタグにもなるぐらい<strong style="color: #ff0000;">いい</strong>らしい</p>
+					<a class="twitter-timeline"  href="https://twitter.com/hashtag/Xamarin%E3%81%AF%E3%81%84%E3%81%84%E3%81%9E" data-widget-id="852119877137707012">#Xamarinはいいぞ のツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</section>
+
+<!-- 				<section>
+					<h2>余談</h2>
+					<p>東京のある人もファンみたいです</p>
+					<img src="images/ネタ.png"/>
+				</section> -->
+
+				<section>
+					<h2>Xamarinってなあに？</h2>
+					<ul>
+						<li>クロスプラットフォーム開発環境とツール</li>
+						<li><strong style="color: #ff0000;">C#</strong>でAndroidやiOSなど複数のプラットフォーム向けの開発が可能</li>
+						<li>WindowsではVisual Studio</li>
+						<li>MacではXamarin Studio (Mac版のVSもあるけどまだ早い感じ)</li>
+						<li>2016.02にMicrosoftに買収され無償化(買収前は$299〜$1899/年)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>２つの開発手法</h2>
+					<img src="images/開発手法.png" style="width:60%;height:60%"/>
+					<table>
+						<tr>
+							<td>Xamarin Native</td>
+							<td>Xamarin.Forms</td>
+						</tr>
+						<tr>
+							<td style="font-size: 26px;">ロジックのみ共通化。UIはネイティブで個別に作り込む</td>
+							<td style="font-size: 26px;">ロジックとUIを共通化。UIは各プラットフォームの同じ役割のUIが自動マッピング</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h2>何か作ってみよう！</h2>
+					<p>ありきたりですが<strong style="color: #ff0000;">チャットアプリ</strong>を作ってみました</p>
+				</section>
+
+				<section>
+					<h2>クライアント</h2>
+					<br/><br/>
+					<ul>
+						<li>もちろんXamarinでC#</li>
+						<li>
+							Xamarin.Formsで複数プラットフォーム対応
+							<ul>
+								<li>iOS</li>
+								<li>Android</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>サーバ</h2>
+					<br/><br/>
+					<ul>
+						<li>もちろんPython</li>
+						<li>フレームワークは<a href="https://bottlepy.org/docs/dev/">Bottle</a>を使います</li>
+						<li>サーバは<a href="https://www.heroku.com/">Heroku</a>を使います</li>
+						<li>WebSocketで複数・同時通信を行う</li>
+					</ul>
+					<small>(PythonやBottle、Herokuについては今回は触れません)</small>
+				</section>
+
+				<section>
+					<h2>システム構成</h2>
+					<p>ざっくりこんな感じ</p>
+					<img src="images/構成.png" style="background-color: white;" />
+				</section>
+
+				<section>
+					<h2>デモ</h2>
+					<br/><br/>
+					<a href="https://submeeting.herokuapp.com/">WebSocket Chat Bottle</a>
+					<p>Xamarinはエミュレータで</p>
+				</section>
+
+				<section>
+					<h2>まとめ1</h2>
+					<ul>
+						<li>ASP.NetやWPFにとっても似てるから経験者は翻訳しやすい</li>
+						<li>.Netの機能が全て使えるわけではない(Android、iOS、Windowsフォンで使えるもののみPCLで利用可能)</li>
+						<li>NuGetパッケージを追加したら「最新情報の更新」が必須。これに気が付かなくてハマりました。。</li>
+						<li>Xamarin StudioがIDEとしては貧弱。。VSやIDEAと比べちゃうと。。</li>
+						<li>情報が英語サイトばかり。よくあることなのでこれはしゃーない</li>
+				</section>
+
+				<section>
+					<h2>まとめ2</h2>
+					<ul>
+						<li>コードビハインドのソースは50行程度で作れちゃうのでお手軽！</li>
+						<li>Bottleのソースは30行程度で作れたのでお手軽！</li>
+						<li>Heroku(PaaS)チョー便利。Java、Node.js、Scala、Clojure、Python、PHPのアプリ公開がすぐできちゃう。しかもPostgreSQLも無料で使えちゃう(MySQLを使う場合はクレジットカードの登録が必要)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>結論</h2>
+					<ul>
+						<li>見た目を自由に開発できるXamarin Nativeの方が利用する需要がありそう</li>
+						<li>まだまだこれからって感じがする(XCodeやSwift、Monacaとの比較もしてみたいところ)</li>
+						<li>業務で使うには勇気が必要</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				transition: 'default',
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+			var initializeOptions = {};
+			extend(initializeOptions, baseOptions);
+			extend(initializeOptions, configOptions);
+			Reveal.initialize(initializeOptions);
+		</script>
+	</body>
+</html>
